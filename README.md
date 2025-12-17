@@ -18,3 +18,11 @@
 
 ```bash
 python traceroute.py <host>
+## Тесты
+
+В проекте есть простые unit-тесты для вспомогательных функций.
+
+Запуск:
+
+```bash
+python -m pytest
