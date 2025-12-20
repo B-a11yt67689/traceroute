@@ -18,3 +18,13 @@
 
 ```bash
 python traceroute.py <host>
+## Testing
+
+The utility requires raw sockets and network access.
+
+Manual tests:
+sudo python3 traceroute.py -n 5 1.1.1.1 icmp
+sudo python3 traceroute.py -n 5 -p 443 1.1.1.1 tcp
+sudo python3 traceroute.py -n 5 -p 53 1.1.1.1 udp
+sudo python3 traceroute.py -v -r 1.1.1.1 icmp
+sudo python3 traceroute.py --debug -n 3 1.1.1.1 icmp

@@ -1,19 +1,10 @@
-from traceroute import resolve_host, hostname_or_ip
+import traceroute
 
+def test_is_ipv6():
+    assert traceroute.is_ipv6("::1")
+    assert not traceroute.is_ipv6("8.8.8.8")
 
-def test_resolve_host_returns_same_ip():
-    assert resolve_host("127.0.0.1") == "127.0.0.1"
-
-
-def test_hostname_or_ip_contains_ip():
-    s = hostname_or_ip("127.0.0.1")
-    assert "127.0.0.1" in s
-
-
-def test_resolve_host_raises_on_invalid_host():
-    error_raised = False
-    try:
-        resolve_host("this-domain-should-not-exist-xyz-1234.invalid")
-    except SystemExit:
-        error_raised = True
-    assert error_raised
+def test_parse_asn():
+    assert traceroute.parse_asn("origin: AS15169") == "AS15169"
+    assert traceroute.parse_asn("aut-num: AS1234") == "AS1234"
+    assert traceroute.parse_asn("no asn") is None
